@@ -1,4 +1,11 @@
 <?php
+// Recuperar los datos de la petición
+$nif = $_POST['nif'];
+$nombre = $_POST['nombre'];
+$apellidos = $_POST['apellidos'];
+$email = $_POST['email'];
+$nota = $_POST['nota'];
+
 
 
 ?>

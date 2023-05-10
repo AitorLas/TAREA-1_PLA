@@ -10,8 +10,8 @@
 <body>
 	<div class='container'>
 		<h1 class='centrar'>PLA01: FORMULARI</h1>
-		<form method="post" action="PLA01_mostrardatos.php">
-			<label for='nif'>Nifa</label>
+		<form method="post" action="PLA01_mostrardatos.php" novalidate>
+			<label for='nif'>Nif</label>
 			<input type="text" name="nif" id='nif' required><br><br>
 			<label for='nombre'>Nom</label>
 			<input type="text" name="nombre" id='nombre' required><br><br>
