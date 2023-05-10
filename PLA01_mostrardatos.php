@@ -1,4 +1,11 @@
 <?php
+// Sistema antigui, Inicializar variables que se utilicen en el documento HTML
+// para eviar un warnning en caso de que la variable no exista
+//  $mensajes = null; (se posiciona aquí mismo)
+
+// el nuevo método
+//<?php echo $mensajes ?? null; (cerrar php) se posiciona donde va el mensaje
+
 // Recuperar los datos de la petición
 $nif = $_POST['nif'];
 $nombre = $_POST['nombre'];
@@ -10,11 +17,57 @@ $nota = $_POST['nota'];
 
 try {
 	// validación de datos
-	if ($nif == '') {
-		throw new Exception('Nif ogligatorio');
+	$errores = '';
+
+	if (empty($nif)) {
+		$errores .= 'Nif ogligatorio<br>';
 	}
 
+	if (empty($nombre)) {
+		$errores .= "Nombre obligatorio<br>";
+	}
+
+	if (empty($apellidos)) {
+		$errores .= "Apellido obligatorio<br>";
+	}
+
+	if (empty($email)) {
+		$errores .= "Email obligatorio<br>";
+	}
+	if ($nota == "") {
+		$errores .= "Nota obligatoria<br>";
+	} else {
+		if ($nota < 0 || $nota > 10) {
+			$errores .= "nota fuera de rango";
+		}
+	}
+
+	if (!empty($errores)) {
+		throw new Exception($errores);
+	}
+
+	/*
+	EVALUAR LA NOTA
+	Entre 0 y <5 -> suspenso
+	Entre 5 y <6 -> aprobado
+	Entre 6 y <7 -> bien
+	Entre 7 y <9 -> notable
+	Entre 9 o mayor -> excelente
+
+	*/
 	//operativa que dependa de las validaciones
+
+	if ($nota < 5) {
+		$evaluacion = 'Suspenso';
+	} else if ($nota >= 5 && $nota < 6) {
+		$evaluacion = 'Aprobado';
+	} else if ($nota >= 6 && $nota < 7) {
+		$evaluacion = 'bien';
+	} else if ($nota >= 7 && $nota < 9) {
+		$evaluacion = 'Notable';
+	} else {
+		$evaluacion = 'Aprobado';
+	}
 } catch (Exception $error) {
 	// Operativa a ejecutar en caso de error
 	// para ejecutar un métdo (getMessage) de un objeto ($error) se utiliza en php la flecha ->,
@@ -38,14 +91,14 @@ try {
 		<h1 class='centrar'>PLA01: MOSTRAR DADES</h1>
 		<div class='card'>
 			<input type="text" placeholder="nif" disabled value=''><? echo $nif; ?><br><br>
-			<input type="text" placeholder="nom" disabled value=''>
-			<input type="text" placeholder="cognoms" disabled value=''><br><br>
-			<input type="text" placeholder="qualificació" disabled value=''>
+			<input type="text" placeholder="nom" disabled value=''><? echo $nombre; ?>
+			<input type="text" placeholder="cognoms" disabled value=''><? echo $apellidos; ?><br><br>
+			<input type="text" placeholder="qualificació" disabled value=''><? echo $evaluacion; ?>
 			<!--aqui iran las cajitas <aside></aside>-->
 			<br><br>
 			<input type="text" placeholder="email" disabled value=''><br><br>
-			<textarea cols='22' rows='5' disabled><?php echo $mensajes; ?></textarea>
-			<p class='errores'></p>
+			<textarea cols='22' rows='5' disabled></textarea>
+			<p class='errores'><?php echo $mensajes ?? null; ?></p>
 		</div>
 	</div>
 </body>

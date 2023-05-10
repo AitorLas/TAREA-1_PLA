@@ -20,10 +20,10 @@
 			<label for='email'>Email</label>
 			<input type="email" name="email" id='email' required><br><br>
 			<label for='nota'>Nota exàmen</label>
-			<input type="number" name="nota" id='nota' required min='0' max='12'><br><br>
+			<input type="number" name="nota" id='nota' required min='0' max='10'><br><br>
 
 			<label for='mensaje'>Missatge</label>
-			<textarea name='mensaje' id='mensaje' cols='22' rows='5'>  </textarea><br><br>
+			<textarea name='mensaje' id='mensaje' cols='22' rows='5'> </textarea><br><br>
 			<label></label>
 			<input type="submit" name="Enviar">
 		</form>
