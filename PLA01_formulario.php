@@ -11,7 +11,7 @@
 	<div class='container'>
 		<h1 class='centrar'>PLA01: FORMULARI</h1>
 		<form method="post" action="PLA01_mostrardatos.php" novalidate>
-			<label for='nif'>Nif</label>
+			<label for='nif'>Nif: </label>
 			<input type="text" name="nif" id='nif' required><br><br>
 			<label for='nombre'>Nom</label>
 			<input type="text" name="nombre" id='nombre' required><br><br>
@@ -23,7 +23,7 @@
 			<input type="number" name="nota" id='nota' required min='0' max='12'><br><br>
 
 			<label for='mensaje'>Missatge</label>
-			<textarea name='mensaje' id='mensaje' cols='22' rows='5'></textarea><br><br>
+			<textarea name='mensaje' id='mensaje' cols='22' rows='5'>  </textarea><br><br>
 			<label></label>
 			<input type="submit" name="Enviar">
 		</form>
