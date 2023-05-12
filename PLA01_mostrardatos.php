@@ -6,12 +6,13 @@
 // el nuevo método
 //<?php echo $mensajes ?? null; (cerrar php) se posiciona donde va el mensaje
 
-// Recuperar los datos de la petición
-$nif = $_POST['nif'];
-$nombre = $_POST['nombre'];
-$apellidos = $_POST['apellidos'];
-$email = $_POST['email'];
-$nota = $_POST['nota'];
+// Recuperar los datos de la petición 
+// trim() elimina los espacios en blanco al principio y al fina, no en medio.
+$nif = trim($_POST['nif']);
+$nombre = trim($_POST['nombre']);
+$apellidos = trim($_POST['apellidos']);
+$email = trim($_POST['email']);
+$nota = trim($_POST['nota']);
 
 // Validaciones redundantes, validar también en el servidor, siempre con try catch
 
@@ -66,7 +67,7 @@ try {
 	} else if ($nota >= 7 && $nota < 9) {
 		$evaluacion = 'Notable';
 	} else {
-		$evaluacion = 'Aprobado';
+		$evaluacion = 'Excelente';
 	}
 } catch (Exception $error) {
 	// Operativa a ejecutar en caso de error
@@ -93,7 +94,7 @@ try {
 			<input type="text" placeholder="nif" disabled value=''><? echo $nif; ?><br><br>
 			<input type="text" placeholder="nom" disabled value=''><? echo $nombre; ?>
 			<input type="text" placeholder="cognoms" disabled value=''><? echo $apellidos; ?><br><br>
-			<input type="text" placeholder="qualificació" disabled value=''><? echo $evaluacion; ?>
+			<input type="text" placeholder="qualificació" disabled value="<? echo $evaluacion ?? null; ?>">
 			<!--aqui iran las cajitas <aside></aside>-->
 			<br><br>
 			<input type="text" placeholder="email" disabled value=''><br><br>
