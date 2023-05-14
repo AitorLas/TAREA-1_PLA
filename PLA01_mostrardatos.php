@@ -1,4 +1,7 @@
 <?php
+
+
+
 // Sistema antigui, Inicializar variables que se utilicen en el documento HTML
 // para eviar un warnning en caso de que la variable no exista
 //  $mensajes = null; (se posiciona aquí mismo)
@@ -91,11 +94,20 @@ try {
 	<div class='container'>
 		<h1 class='centrar'>PLA01: MOSTRAR DADES</h1>
 		<div class='card'>
-			<input type="text" placeholder="nif" disabled value=''><? echo $nif; ?><br><br>
-			<input type="text" placeholder="nom" disabled value=''><? echo $nombre; ?>
-			<input type="text" placeholder="cognoms" disabled value=''><? echo $apellidos; ?><br><br>
-			<input type="text" placeholder="qualificació" disabled value="<? echo $evaluacion ?? null; ?>">
+			<input type="text" placeholder="nif" disabled value='<?php echo $nif; ?>'><br><br>
+			<input type="text" placeholder="nom" disabled value='<?php echo $nombre; ?>'>
+			<input type="text" placeholder="cognoms" disabled value='<?php echo $apellidos; ?>'><br><br>
+			<input type="text" placeholder="qualificació" disabled value='<?php echo $evaluacion ?? null; ?>'>
+<?php 
+	for ($n = 0; $n <= $nota; $++) {
+		if ($n < 5) {
+			echo "<aside class ='red'> </aiide>";
+		}
+	}
+?>
 			<!--aqui iran las cajitas <aside></aside>-->
+
+
 			<br><br>
 			<input type="text" placeholder="email" disabled value=''><br><br>
 			<textarea cols='22' rows='5' disabled></textarea>
