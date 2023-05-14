@@ -101,7 +101,16 @@ try {
 <?php 
 	for ($n = 0; $n <= $nota; $++) {
 		if ($n < 5) {
-			echo "<aside class ='red'> </aiide>";
+			echo "<aside class ='red'> </aside>";
+		}
+		if ($n >= 5 && $n < 7) {
+			echo "<aside class ='yellow'> </aside>";
+		}
+		if ($n >= 7 && $n < 9) {
+			echo "<aside class ='green'> </aside>";
+		}
+		if ($n >= 9) {
+			echo "<aside class ='blue'> </aside>";
 		}
 	}
 ?>
